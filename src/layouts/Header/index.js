@@ -2,7 +2,7 @@ const Header = () => {
   return (
     <nav className="grey darken-3">
       <div className="nav-wrapper">
-        <a href="#!" className="brand-logo right">
+        <a href="/" className="brand-logo right">
           React Portfolio
         </a>
         <ul id="nav-mobile" className="left">
