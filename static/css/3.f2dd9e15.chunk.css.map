@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://src/pages/Movies/style.module.scss"],"names":[],"mappings":"AAAA,oBACE,YAAA,CACA,yDAAA,CACA,aAAA,CAAA,QAAA","file":"3.f2dd9e15.chunk.css","sourcesContent":[".cards {\r\n  display: grid;\r\n  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));\r\n  gap: 1rem;\r\n}"]}
