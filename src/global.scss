@@ -1,7 +1,30 @@
-@import './config.scss';
+@import "./config.scss";
 
+@keyframes show {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
 .page-wrap {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -27,7 +50,7 @@ nav {
   justify-content: center;
 }
 
-input[type=search]:not(.browser-default):focus:not([readonly]) {
+input[type="search"]:not(.browser-default):focus:not([readonly]) {
   border-bottom: 1px solid #26a69a;
   -webkit-box-shadow: 0 1px 0 0 #26a69a;
   box-shadow: 0 1px 0 0 #26a69a;
@@ -50,6 +73,130 @@ input[type=search]:not(.browser-default):focus:not([readonly]) {
   margin-bottom: 2rem;
 }
 
+.card {
+  display: flex;
+  flex-direction: column;
+}
 
+.card-content {
+  flex-grow: 1;
+}
 
+.toast-container {
+  position: fixed;
+  top: 3rem;
+  right: 6rem;
+  z-index: 1009;
 
+  .toast {
+    animation: fade-in 0.3s ease-in-out;
+  }
+}
+
+//Shop
+
+.cart {
+  position: fixed;
+  right: 2rem;
+  top: 6rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 99;
+  .quantity,
+  > .material-icons {
+    color: #fff;
+  }
+}
+
+.modal {
+  &.show {
+    display: block;
+    z-index: 1003;
+    opacity: 1;
+    top: 10%;
+    animation: show 0.3s ease-in-out;
+    + .modal-overlay {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1002;
+    }
+  }
+  .close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0.6rem;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.collection {
+  .collection-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .td-title {
+      flex-grow: 1;
+    }
+    .td-sum {
+      padding: 0 15px;
+      min-width: 15%;
+      white-space: nowrap;
+    }
+    .td-quantity {
+      min-width: 15%;
+      white-space: nowrap;
+      span {
+        display: inline-block;
+        text-align: center;
+        border: 1px solid $accent;
+        vertical-align: middle;
+      }
+      .qty-btn {
+        background: $accent;
+        color: #fff;
+        border-radius: 0 2px 2px 0;
+        cursor: pointer;
+        &.minus {
+          border-radius: 2px 0 0 2px;
+        }
+      }
+      .qty-item {
+        min-width: 2em;
+        line-height: 1.4;
+      }
+    }
+    .material-icons {
+      font-size: 1.4em;
+      vertical-align: middle;
+    }
+    .td-del i {
+      color: $accent;
+      cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: 967px) {
+  .cart {
+    right: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .cart {
+    top: unset;
+    bottom: 1rem;
+  }
+}

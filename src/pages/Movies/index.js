@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import Category from "./lib/Category";
 import Search from "./lib/Search";
 import Loading from "./../../lib/Loading";
-
-const API_KEY = process.env.REACT_APP_API_KEY;
+import { API_URL_OMBD } from "./../../config";
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -11,11 +10,7 @@ const Movies = () => {
 
   const searchMovies = (str, type = "all") => {
     setLoading(true);
-    fetch(
-      `https://www.omdbapi.com/?apikey=${API_KEY}&s=${str}${
-        type !== "all" ? `&type=${type}` : ""
-      }`
-    )
+    fetch(`${API_URL_OMBD}&s=${str}${type !== "all" ? `&type=${type}` : ""}`)
       .then((response) => response.json())
       .then((data) => {
         setMovies(data.Search);
@@ -28,7 +23,7 @@ const Movies = () => {
   };
 
   useEffect(() => {
-    fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=air`)
+    fetch(`${API_URL_OMBD}&s=air`)
       .then((response) => response.json())
       .then((data) => {
         setMovies(data.Search);
