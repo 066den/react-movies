@@ -34,7 +34,7 @@
   padding: 1.5rem 0;
 }
 
-.row {
+.row.row-flex {
   display: flex;
   flex-wrap: wrap;
 }
@@ -76,17 +76,21 @@ input[type="search"]:not(.browser-default):focus:not([readonly]) {
 .card {
   display: flex;
   flex-direction: column;
-}
-
-.card-content {
-  flex-grow: 1;
+  .card-content {
+    flex-grow: 1;
+    .card-title {
+      a {
+        color: inherit;
+      }
+    }
+  }
 }
 
 .toast-container {
   position: fixed;
   top: 3rem;
   right: 6rem;
-  z-index: 1009;
+  z-index: 1001;
 
   .toast {
     animation: fade-in 0.3s ease-in-out;
@@ -186,6 +190,11 @@ input[type="search"]:not(.browser-default):focus:not([readonly]) {
       cursor: pointer;
     }
   }
+}
+
+iframe {
+  width: 600;
+  height: 350;
 }
 
 @media (max-width: 967px) {

@@ -1,36 +1,29 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
+import { ShopContext } from "../../context/ShopContext";
 
-const Alert = (props) => {
-  const { alert = "" } = props;
-  const [alerts, setAlerts] = useState([]);
-
-  useEffect(() => {
-    const newAlert = { text: alert, id: Math.floor(Math.random() * 100) };
-    setAlerts([...alerts, newAlert]);
-  }, [alert]);
+const Alert = () => {
+  const { alerts, clearAlerts } = useContext(ShopContext);
 
   useEffect(() => {
     const timerId = setTimeout(() => {
-      setAlerts([]);
+      clearAlerts();
     }, 3000);
     return () => {
       clearTimeout(timerId);
     };
+    //eslint-disable-next-line
   }, [alerts]);
 
   return (
     <div className="toast-container">
-      {alerts
-        ? alerts.map((item) => {
-            return (
-              <div key={item.id} className="toast">
-                {item.text}
-              </div>
-            );
-          })
+      {alerts.length
+        ? alerts.map((item, index) => (
+            <div key={index} className="toast">
+              {item}
+            </div>
+          ))
         : ""}
     </div>
   );
 };
-
 export default Alert;

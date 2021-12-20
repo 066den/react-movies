@@ -1,18 +1,10 @@
 import CartList from "./lib/CartList";
-import { useState } from "react";
-const Cart = (props) => {
-  const {
-    order,
-    removeFromCart = Function.prototype,
-    incQuantity = Function.prototype,
-    decQuantity = Function.prototype,
-  } = props;
-  const quantity = order.length;
-  const [isCartShow, setCartShow] = useState(false);
+import { useContext } from "react";
+import { ShopContext } from "../../../../context/ShopContext";
 
-  const handleCartShow = () => {
-    setCartShow(!isCartShow);
-  };
+const Cart = () => {
+  const { order, isCartShow, handleCartShow } = useContext(ShopContext);
+  const quantity = order.length;
 
   return (
     <>
@@ -20,15 +12,7 @@ const Cart = (props) => {
         <i className="material-icons">shopping_basket</i>
         {quantity ? <small className="quantity">{quantity}</small> : null}
       </div>
-      {isCartShow && (
-        <CartList
-          order={order}
-          handleCartShow={handleCartShow}
-          removeFromCart={removeFromCart}
-          incQuantity={incQuantity}
-          decQuantity={decQuantity}
-        />
-      )}
+      {isCartShow && <CartList />}
     </>
   );
 };

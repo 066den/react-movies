@@ -8,6 +8,7 @@ const Footer = () => {
             className="grey-text text-lighten-4 right"
             href="https://github.com/066den/react-movies"
             target="_blank"
+            rel="noreferrer"
           >
             Repo
           </a>

@@ -1,19 +1,22 @@
+import { NavLink } from "react-router-dom";
+
 const Header = () => {
   return (
     <nav className="grey darken-3">
       <div className="nav-wrapper">
-        <a href="/" className="brand-logo right">
+        <NavLink to="/" className="brand-logo right">
           React Portfolio
-        </a>
+        </NavLink>
+
         <ul id="nav-mobile" className="left">
           <li>
-            <a href="#">Home</a>
+            <NavLink to="/">Meals</NavLink>
           </li>
           <li>
-            <a href="#">Movies</a>
+            <NavLink to="/movies">Movies</NavLink>
           </li>
           <li>
-            <a href="#">Shop</a>
+            <NavLink to="/shop">Shop</NavLink>
           </li>
         </ul>
       </div>
